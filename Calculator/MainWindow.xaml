@@ -1,0 +1,52 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Calculator" Height="480" Width="320" ResizeMode="CanMinimize">
+    <Grid x:Name="LayoutRoot" Background="White" KeyDown="Root_KeyDown" TextInput="Root_TextInput">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="stackPanelScreen"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" >
+            <DockPanel>
+                <Image x:Name="imagePin" DockPanel.Dock="Left" Width="16" Height="16" Source="Resources\icon-unpined.png" Margin="4" MouseDown="Pin_MouseDown" ToolTip="Pin as top window"></Image>
+                <TextBlock x:Name="textBlockOut" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4" FontSize="14" />
+            </DockPanel>
+            <TextBlock x:Name="textBlockIn" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4" FontSize="16" Focusable="True" FocusVisualStyle="{x:Null}" />
+        </StackPanel>
+        <Button Grid.Row="1" Grid.Column="0" Focusable="False" Click="Button_Clear_Click">C</Button>
+        <Button Grid.Row="1" Grid.Column="1" Focusable="False" Click="Button_Click">(</Button>
+        <Button Grid.Row="1" Grid.Column="2" Focusable="False" Click="Button_Click">)</Button>
+        <Button Grid.Row="1" Grid.Column="3" Focusable="False" Click="Button_Backspace_Click">&#8656;</Button>
+        <Button Grid.Row="2" Grid.Column="0" Focusable="False" Click="Button_Click">7</Button>
+        <Button Grid.Row="2" Grid.Column="1" Focusable="False" Click="Button_Click">8</Button>
+        <Button Grid.Row="2" Grid.Column="2" Focusable="False" Click="Button_Click">9</Button>
+        <Button Grid.Row="2" Grid.Column="3" Focusable="False" Click="Button_Click">/</Button>
+        <Button Grid.Row="3" Grid.Column="0" Focusable="False" Click="Button_Click">4</Button>
+        <Button Grid.Row="3" Grid.Column="1" Focusable="False" Click="Button_Click">5</Button>
+        <Button Grid.Row="3" Grid.Column="2" Focusable="False" Click="Button_Click">6</Button>
+        <Button Grid.Row="3" Grid.Column="3" Focusable="False" Click="Button_Click">*</Button>
+        <Button Grid.Row="4" Grid.Column="0" Focusable="False" Click="Button_Click">1</Button>
+        <Button Grid.Row="4" Grid.Column="1" Focusable="False" Click="Button_Click">2</Button>
+        <Button Grid.Row="4" Grid.Column="2" Focusable="False" Click="Button_Click">3</Button>
+        <Button Grid.Row="4" Grid.Column="3" Focusable="False" Click="Button_Click">-</Button>
+        <Button Grid.Row="5" Grid.Column="0" Focusable="False" Click="Button_Click">0</Button>
+        <Button Grid.Row="5" Grid.Column="1" Focusable="False" Click="Button_Click">.</Button>
+        <Button Grid.Row="5" Grid.Column="2" Focusable="False" Click="Button_Enter_Click">=</Button>
+        <Button Grid.Row="5" Grid.Column="3" Focusable="False" Click="Button_Click">+</Button>
+    </Grid>
+</Window>
