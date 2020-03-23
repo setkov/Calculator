@@ -55,11 +55,6 @@ namespace Calculator
             Value = letter.ToString();
             TokenType = SpotTokenType(letter);
         }
-        public Token(string word)
-        {
-            Value = word;
-            TokenType = SpotTokenType(word[0]);
-        }
 
         private TokenType SpotTokenType(char letter)
         {

@@ -68,9 +68,14 @@ namespace CalculatorTest
         public void TestInfix()
         {
             string expression = "2.5+3*(1+2)-5";
+
+            var token_decimal = new Token('2');
+            token_decimal.Append('.');
+            token_decimal.Append('5');
+
             List<Token> infix = new List<Token>()
             {
-                new Token("2.5"),
+                token_decimal,
                 new Token('+'),
                 new Token('3'),
                 new Token('*'),
@@ -90,9 +95,14 @@ namespace CalculatorTest
         public void TestPostfix()
         {
             string expression = "2.5+3*(1+2)-5";
+
+            var token_decimal = new Token('2');
+            token_decimal.Append('.');
+            token_decimal.Append('5');
+
             List<Token> postfix = new List<Token>()
             {
-                new Token("2.5"),
+                token_decimal,
                 new Token('3'),
                 new Token('1'),
                 new Token('2'),
