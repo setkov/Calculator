@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,6 +73,24 @@ namespace Calculator
                 toolTip.Content = "Pin as top window";
             }
             imagePin.ToolTip = toolTip;
+        }
+
+        private void Info_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string msg =    "Calculator | v1.0.0" + Environment.NewLine +
+                            "© 2020 Setkov" + Environment.NewLine + 
+                            "All Rights Reserved" + Environment.NewLine +
+                            "For more information, visit: https://github.com/setkov/Calculator";
+            if (MessageBox.Show(msg, string.Empty, MessageBoxButton.OKCancel, MessageBoxImage.Information) == MessageBoxResult.OK)
+            {
+                var targetURL = "https://github.com/setkov/Calculator";
+                var psi = new ProcessStartInfo
+                {
+                    FileName = targetURL,
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

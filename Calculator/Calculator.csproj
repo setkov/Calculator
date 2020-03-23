@@ -4,9 +4,23 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <StartupObject>Calculator.App</StartupObject>
+    <Authors>SetkovSergey</Authors>
+    <Company>SetkovSergey</Company>
+    <Description>simple calculator application
+supports arithmetic operations
+supports brackets
+supports mouse and keyboard input</Description>
+    <PackageProjectUrl>https://github.com/setkov/Calculator</PackageProjectUrl>
+    <RepositoryUrl />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\icon-info.png" />
     <None Remove="Resources\icon-pined.png" />
     <None Remove="Resources\icon-unpined.png" />
   </ItemGroup>
@@ -16,6 +30,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\icon-unpined.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\icon-info.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

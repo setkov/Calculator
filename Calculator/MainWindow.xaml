@@ -26,7 +26,10 @@
                 <Image x:Name="imagePin" DockPanel.Dock="Left" Width="16" Height="16" Source="Resources\icon-unpined.png" Margin="4" MouseDown="Pin_MouseDown" ToolTip="Pin as top window"></Image>
                 <TextBlock x:Name="textBlockOut" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4" FontSize="14" />
             </DockPanel>
-            <TextBlock x:Name="textBlockIn" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4" FontSize="16" Focusable="True" FocusVisualStyle="{x:Null}" />
+            <DockPanel>
+                <Image x:Name="imageInfo" DockPanel.Dock="Left" Width="16" Height="16" Source="Resources\icon-info.png" Margin="4" MouseDown="Info_MouseDown" ToolTip="Info"></Image>
+                <TextBlock x:Name="textBlockIn" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4" FontSize="16" Focusable="True" FocusVisualStyle="{x:Null}" />
+            </DockPanel>
         </StackPanel>
         <Button Grid.Row="1" Grid.Column="0" Focusable="False" Click="Button_Clear_Click">C</Button>
         <Button Grid.Row="1" Grid.Column="1" Focusable="False" Click="Button_Click">(</Button>
