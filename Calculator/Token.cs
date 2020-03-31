@@ -12,13 +12,22 @@ namespace Calculator
         Unknown
     }
 
+    public enum OperatorType
+    {
+        UnaryNegation,
+        Division,
+        Multiplication,
+        Subtraction,
+        Addition
+    }
+
     public class Token
     {
         private static readonly NumberStyles NumberStyle = NumberStyles.Number;
         private static readonly NumberFormatInfo NumberFormat = new NumberFormatInfo { NumberDecimalSeparator = "." };
 
-        public string Value { private set;  get; }
         public TokenType TokenType { get; }
+        public string Value { private set;  get; }
         public decimal? Number
         {
             get
@@ -30,30 +39,46 @@ namespace Calculator
                 return null;
             }
         }
+        public OperatorType? Operator { get; }
         public int? Priority
         {
             get
             {
-                if (TokenType == TokenType.Operator || TokenType == TokenType.LeftBracket)
+                if (TokenType == TokenType.Operator)
                 {
-                    return Value switch
+                    return Operator switch
                     {
-                        "/" => 4,
-                        "*" => 4,
-                        "-" => 2,
-                        "+" => 2,
-                        "(" => 0,
-                        _ => -1,
+                        OperatorType.UnaryNegation => 6,
+                        OperatorType.Division => 4,
+                        OperatorType.Multiplication => 4,
+                        OperatorType.Subtraction => 2,
+                        OperatorType.Addition => 2,
+                        _ => null,
                     };
+                }
+                if (TokenType == TokenType.LeftBracket)
+                {
+                    return 0;
                 }
                 return null;
             }
         }
 
-        public Token(char letter)
+        public Token(char letter, bool isLead=false)
         {
             Value = letter.ToString();
             TokenType = SpotTokenType(letter);
+            if (TokenType == TokenType.Operator)
+            {
+                if (letter == '-' && isLead)
+                {
+                    Operator = OperatorType.UnaryNegation;
+                }
+                else
+                {
+                    Operator = SpotOperator(letter);
+                }
+            }
         }
 
         private TokenType SpotTokenType(char letter)
@@ -79,6 +104,18 @@ namespace Calculator
             }
 
             return TokenType.Unknown;
+        }
+
+        private OperatorType? SpotOperator(char letter)
+        {
+            return letter switch
+            {
+                '/' => OperatorType.Division,
+                '*' => OperatorType.Multiplication,
+                '-' => OperatorType.Subtraction,
+                '+' => OperatorType.Addition,
+                _ => null,
+            };
         }
 
         public void Append(char letter)

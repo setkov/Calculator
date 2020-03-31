@@ -21,5 +21,13 @@ namespace CalculatorTest
             Computer computer = new Computer(expression);
             Assert.AreEqual((decimal)6, computer.Calc());
         }
+
+        [TestMethod]
+        public void TestCalcUnaryNegation()
+        {
+            string expression = "-6*(-1-2)";
+            Computer computer = new Computer(expression);
+            Assert.AreEqual((decimal)18, computer.Calc());
+        }
     }
 }

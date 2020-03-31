@@ -27,24 +27,32 @@ namespace Calculator
                         break;
 
                     case TokenType.Operator:
-                        var rightOperand = stack.Pop();
-                        var leftOperand = stack.Pop();
-                        switch (token.Value)
+                        if (token.Operator == OperatorType.UnaryNegation)
                         {
-                            case "/":
-                                stack.Push(leftOperand / rightOperand);
-                                break;
-                            case "*":
-                                stack.Push(leftOperand * rightOperand);
-                                break;
-                            case "-":
-                                stack.Push(leftOperand - rightOperand);
-                                break;
-                            case "+":
-                                stack.Push(leftOperand + rightOperand);
-                                break;
-                            default:
-                                break;
+                            var operand = stack.Pop();
+                            stack.Push(-operand);
+                        }
+                        else
+                        {
+                            var rightOperand = stack.Pop();
+                            var leftOperand = stack.Pop();
+                            switch (token.Operator)
+                            {
+                                case OperatorType.Division:
+                                    stack.Push(leftOperand / rightOperand);
+                                    break;
+                                case OperatorType.Multiplication:
+                                    stack.Push(leftOperand * rightOperand);
+                                    break;
+                                case OperatorType.Subtraction:
+                                    stack.Push(leftOperand - rightOperand);
+                                    break;
+                                case OperatorType.Addition:
+                                    stack.Push(leftOperand + rightOperand);
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                         break;
 

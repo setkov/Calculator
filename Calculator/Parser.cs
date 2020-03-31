@@ -27,10 +27,10 @@ namespace Calculator
             var tokens = new List<Token>();
             if (expression.Length > 0)
             {
-                var token = new Token(expression[0]);
+                var token = new Token(expression[0], true);
                 for (int i = 1; i < expression.Length; i++)
                 {
-                    var nextToken = new Token(expression[i]);
+                    var nextToken = new Token(expression[i], token.TokenType == TokenType.LeftBracket);
                     if (token.TokenType == TokenType.Operator || token.TokenType == TokenType.LeftBracket || token.TokenType == TokenType.RithtBracket || token.TokenType != nextToken.TokenType)
                     {
                         tokens.Add(token);
@@ -58,7 +58,7 @@ namespace Calculator
                     return "Error: unknown token " + token.Value;
                 }
 
-                if (token.TokenType == TokenType.Operator && tokenPrev.TokenType == TokenType.Operator)
+                if (token.TokenType == TokenType.Operator && tokenPrev != null && tokenPrev.TokenType == TokenType.Operator)
                 {
                     return "Error: wrong operator " + tokenPrev.Value + token.Value;
                 }

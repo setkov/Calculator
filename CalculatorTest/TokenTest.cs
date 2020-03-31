@@ -25,10 +25,19 @@ namespace CalculatorTest
         }
 
         [TestMethod]
+        public void TestOperatorUnarNeg()
+        {
+            Token token = new Token('-', true);
+            Assert.AreEqual(TokenType.Operator, token.TokenType);
+            Assert.AreEqual(OperatorType.UnaryNegation, token.Operator);
+        }
+
+        [TestMethod]
         public void TestOperatorDiv()
         {
             Token token = new Token('/');
             Assert.AreEqual(TokenType.Operator, token.TokenType);
+            Assert.AreEqual(OperatorType.Division, token.Operator);
         }
 
         [TestMethod]
@@ -36,20 +45,23 @@ namespace CalculatorTest
         {
             Token token = new Token('*');
             Assert.AreEqual(TokenType.Operator, token.TokenType);
+            Assert.AreEqual(OperatorType.Multiplication, token.Operator);
         }
 
         [TestMethod]
-        public void TestOperatorMinus()
+        public void TestOperatorSub()
         {
             Token token = new Token('-');
             Assert.AreEqual(TokenType.Operator, token.TokenType);
+            Assert.AreEqual(OperatorType.Subtraction, token.Operator);
         }
 
         [TestMethod]
-        public void TestOperatorPlus()
+        public void TestOperatorAdd()
         {
             Token token = new Token('+');
             Assert.AreEqual(TokenType.Operator, token.TokenType);
+            Assert.AreEqual(OperatorType.Addition, token.Operator);
         }
 
         [TestMethod]
