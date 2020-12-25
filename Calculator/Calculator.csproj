@@ -13,6 +13,7 @@ supports brackets
 supports mouse and keyboard input</Description>
     <PackageProjectUrl>https://github.com/setkov/Calculator</PackageProjectUrl>
     <RepositoryUrl />
+    <ApplicationIcon>calculator.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
