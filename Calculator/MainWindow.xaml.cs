@@ -51,9 +51,9 @@ namespace Calculator
         private void Root_TextInput(object sender, TextCompositionEventArgs e)
         {
             var text = e.Text;
-            if (".1234567890()/*-+".Contains(text))
+            if (",.1234567890()/*-+".Contains(text))
             {
-                textBlockIn.Text += text;
+                textBlockIn.Text += (text == ",") ? "." : text;
             }
         }
 
